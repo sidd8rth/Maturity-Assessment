@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security Maturity Self-Assessment — Airtel Secure</title>
+  <meta name="description" content="Benchmark your security posture in 4 minutes across 7 domains and get a personalised Airtel Secure blueprint." />
+  <!-- Airtel Sans font (from Airtel CDN — same as airtel.in/b2b) -->
+  <link rel="stylesheet" href="https://assets.airtel.in/static-assets/airtel-sans/fonts/font.css" />
+  <link rel="icon" type="image/x-icon" href="https://assets.airtel.in/static-assets/new-home/img/black-favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ── AIRTEL BUSINESS HEADER ── -->
+<header class="b2b_header">
+  <div class="as-nav-inner">
+    <a href="https://www.airtel.in/b2b/" class="as-brand" aria-label="Airtel Business">
+      <svg width="108" viewBox="0 0 108 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="logo_text" d="M40 22.8315V11.3877H44.944C47.1123 11.3877 48.4369 12.8455 48.4369 14.5899C48.4369 15.5085 47.9645 16.4438 47.1798 16.8989C48.2513 17.354 48.8672 18.3989 48.8672 19.5197C48.8672 21.382 47.357 22.8315 45.2815 22.8315L40 22.8315ZM44.944 16.2584C45.9987 16.2584 46.6483 15.4916 46.6483 14.632C46.6483 13.8062 46.0493 12.9635 44.944 12.9635H41.7802V16.2584H44.944ZM41.7802 21.2472H45.2815C46.4036 21.2472 47.1123 20.4298 47.1123 19.4859C47.1123 18.5843 46.3699 17.75 45.2815 17.75H41.7802V21.2472ZM52.4687 14.7416V19.3006C52.4687 20.6405 53.2027 21.4157 54.443 21.4157C55.7169 21.4157 56.7209 20.6405 56.7209 19.3006V14.7416H58.3914V22.8315H56.7125V21.8118C56.4425 22.2247 55.6747 23 54.1814 23C51.9709 23 50.7982 21.618 50.7982 19.6545V14.7416H52.4687ZM61.5711 20.1264C62.0267 20.9186 62.8029 21.4663 63.8322 21.4663C64.7013 21.4663 65.3509 21.1208 65.3509 20.573C65.3509 19.9748 64.8531 19.7894 63.6635 19.5197C61.9255 19.132 60.6853 18.5843 60.6853 16.9832C60.6853 15.5169 62.0267 14.5731 63.6804 14.5731C65.1906 14.5731 66.3464 15.3568 66.8864 16.2416L65.7643 17.2023C65.3256 16.5787 64.6337 16.0984 63.6804 16.0984C62.8789 16.0984 62.3389 16.4354 62.3389 16.9579C62.3389 17.5731 62.9379 17.7416 64.1275 18.0281C65.8908 18.4579 67.0383 19.0309 67.0383 20.573C67.0383 22.0477 65.5534 23 63.8322 23C62.2545 23 60.9553 22.2753 60.3309 21.1292L61.5711 20.1264ZM69.906 11C70.5135 11 70.9438 11.4214 70.9438 12.0281C70.9438 12.6348 70.5135 13.0562 69.906 13.0562C69.2986 13.0562 68.8767 12.6348 68.8767 12.0281C68.8767 11.4213 69.2985 11 69.906 11ZM69.0707 22.8315V14.7416H70.7413V22.8315H69.0707ZM73.3057 22.8315V14.7416H74.9846V15.7612C75.2546 15.3484 76.0224 14.5731 77.4735 14.5731C79.7009 14.5731 80.8736 15.9551 80.8736 17.9185V22.8315H79.2031V18.2724C79.2031 16.9326 78.4691 16.1574 77.212 16.1574C75.9802 16.1574 74.9762 16.9326 74.9762 18.2724V22.8315H73.3057ZM86.9219 14.5731C89.2842 14.5731 90.8198 16.3259 90.8198 18.4916C90.8198 18.7444 90.8029 19.0056 90.7523 19.2668H84.4667C84.5427 20.4803 85.5804 21.4326 86.9809 21.4326C87.9934 21.4326 88.8033 21.0028 89.4108 20.0506L90.6426 20.9438C89.8917 22.2921 88.4152 23 86.9809 23C84.5343 23 82.7372 21.1966 82.7372 18.795C82.7372 16.3848 84.4667 14.5731 86.9219 14.5731ZM89.124 18.0197C89.0227 16.882 88.0693 16.0815 86.905 16.0815C85.6648 16.0815 84.7199 16.882 84.5089 18.0197H89.124ZM93.4174 20.1264C93.873 20.9186 94.6492 21.4663 95.6785 21.4663C96.5475 21.4663 97.1971 21.1208 97.1971 20.573C97.1971 19.9748 96.6993 19.7894 95.5098 19.5197C93.7717 19.132 92.5315 18.5843 92.5315 16.9832C92.5315 15.5169 93.873 14.5731 95.5266 14.5731C97.0369 14.5731 98.1927 15.3568 98.7327 16.2416L97.6105 17.2023C97.1718 16.5787 96.48 16.0984 95.5266 16.0984C94.7251 16.0984 94.1851 16.4354 94.1851 16.9579C94.1851 17.5731 94.7842 17.7416 95.9738 18.0281C97.7371 18.4579 98.8845 19.0309 98.8845 20.573C98.8845 22.0477 97.3996 23 95.6785 23C94.1008 23 92.8015 22.2753 92.1772 21.1292L93.4174 20.1264ZM101.533 20.1264C101.989 20.9186 102.765 21.4663 103.794 21.4663C104.663 21.4663 105.313 21.1208 105.313 20.573C105.313 19.9748 104.815 19.7894 103.625 19.5197C101.887 19.132 100.647 18.5843 100.647 16.9832C100.647 15.5169 101.989 14.5731 103.642 14.5731C105.152 14.5731 106.308 15.3568 106.848 16.2416L105.726 17.2023C105.287 16.5787 104.596 16.0984 103.642 16.0984C102.841 16.0984 102.301 16.4354 102.301 16.9579C102.301 17.5731 102.9 17.7416 104.089 18.0281C105.853 18.4579 107 19.0309 107 20.573C107 22.0477 105.515 23 103.794 23C102.216 23 100.917 22.2753 100.293 21.1292L101.533 20.1264Z" fill="black"/>
+        <path class="short_logo" d="M26.8579 18.1642C28.6391 13.6341 27.182 11.3886 23.9345 11.3694C18.7194 11.3386 13.4921 16.8976 8.82871 18.5241C4.57341 20.0083 1.14017 19.4118 0.183261 16.125C-2.52249 6.83122 25.5117 -8.99114 32.9162 6.52823C38.5187 18.5701 21.101 33.7804 10.4054 33.9983C1.88039 34.1719 7.20724 21.1513 13.2564 21.1715C14.6658 21.1762 16.0829 21.7293 16.1767 23.1336C16.2699 24.5265 14.5761 25.6947 13.2488 26.9529C10.9996 29.0848 10.3498 30.638 10.9553 31.377C11.5609 32.116 13.449 31.9728 16.6564 29.8147C21.808 26.3485 25.2272 22.3243 26.8579 18.1642Z" fill="#d40000"/>
+      </svg>
+    </a>
+    <div class="as-header-right">
+      <span class="as-page-tag">Security Maturity Assessment</span>
+      <a href="https://www.airtel.in/b2b/contact-us" class="as-expert-btn">Talk to an Expert</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb-bar">
+  <div class="breadcrumb-inner">
+    <a href="https://www.airtel.in/b2b/">Home</a>
+    <span>/</span>
+    <a href="https://www.airtel.in/b2b/security">Security</a>
+    <span>/</span>
+    <span>Maturity Assessment</span>
+  </div>
+</div>
+
+<main>
+
+  <div class="quiz-wrap">
+
+    <!-- ── INTRO ── -->
+    <div id="intro" class="q-card">
+      <span class="eyebrow">12 questions · Free · ~4 minutes</span>
+      <h1 class="intro-title">How secure is your<br/><span>organisation, really?</span></h1>
+      <p class="intro-body">12 questions across 7 domains. Your score, domain breakdown, and a personalised Airtel Secure blueprint — generated instantly on this device. Nothing leaves your browser.</p>
+      <div class="q-nav">
+        <span class="q-counter">Answers stay in your browser. Nothing is sent anywhere.</span>
+        <button class="btn btn-primary btn-lg" id="start-btn">Start assessment →</button>
+      </div>
+    </div>
+
+    <!-- ── INDUSTRY SELECTOR ── -->
+    <div id="industry-screen" style="display:none">
+      <div class="q-card">
+        <span class="q-step">Step 0 of 12</span>
+        <h2 class="q-title" style="margin-top:8px;font-size:1.25rem">First, what industry are you in?</h2>
+        <p style="color:var(--text-mute);font-size:0.86rem;margin-bottom:4px">We weight your score against what matters most for your sector's threat landscape and regulatory environment.</p>
+        <div class="ind-grid" id="ind-grid"></div>
+        <div id="other-industry-input" class="other-industry-input">
+          <label for="other-industry-text">Tell us your industry</label>
+          <input type="text" id="other-industry-text" placeholder="e.g. Retail, Education, Hospitality, Media…" maxlength="80" />
+        </div>
+        <div class="q-nav">
+          <button class="btn btn-ghost" id="ind-back-btn">← Back</button>
+          <button class="btn btn-primary" id="ind-next-btn" disabled>Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── QUIZ ── -->
+    <div id="quiz" style="display:none">
+      <div class="mode-bar">
+        <label class="plain-toggle" title="Show explanations in plain business language instead of technical terms">
+          <input type="checkbox" id="plain-toggle" />
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span class="toggle-label">Plain English mode</span>
+          <span class="toggle-hint">Explains each option in plain business terms</span>
+        </label>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="progress-label">Question 1 of 12</span>
+          <span id="progress-pct">0%</span>
+        </div>
+        <div class="progress"><span id="bar" style="width:0%"></span></div>
+      </div>
+      <div class="q-card">
+        <div class="q-step" id="step-label">Question 1 of 12</div>
+        <div class="q-domain" id="domain-label"></div>
+        <h2 class="q-title" id="q-title"></h2>
+        <div class="opts" id="opts"></div>
+        <div class="q-nav">
+          <button class="btn btn-ghost" id="back-btn">← Back</button>
+          <span class="q-counter" id="q-counter"></span>
+          <button class="btn btn-primary" id="next-btn" disabled>Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RESULTS ── -->
+    <div id="results" class="results">
+      <div class="q-card results-card">
+
+        <div class="view-toggle">
+          <span class="view-toggle-label">Read this as:</span>
+          <div class="view-toggle-group" role="tablist">
+            <button type="button" class="view-btn active" data-view="business" role="tab">Business owner</button>
+            <button type="button" class="view-btn" data-view="technical" role="tab">CISO / IT lead</button>
+          </div>
+        </div>
+
+        <div class="results-layout">
+
+          <!-- LEFT: score + threats -->
+          <div class="results-left">
+            <div class="results-score-panel">
+              <span class="eyebrow" style="margin-bottom:16px;display:inline-block">Your security maturity score</span>
+              <div class="score-circle">
+                <svg width="200" height="200" viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="86" stroke="var(--border)" stroke-width="12" fill="none"/>
+                  <circle id="score-ring" cx="100" cy="100" r="86"
+                    stroke="url(#scoreGrad)" stroke-width="12" fill="none"
+                    stroke-linecap="round" stroke-dasharray="540" stroke-dashoffset="540"/>
+                  <defs>
+                    <linearGradient id="scoreGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#d40000"/>
+                      <stop offset="1" stop-color="#ff6060"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div class="score-num" id="score-num">0</div>
+                <div class="score-sub">out of 100</div>
+              </div>
+              <div id="tier-pill" class="tier-pill tier-developing" style="margin-top:16px">Developing</div>
+              <p class="tier-msg" id="tier-msg" style="margin-top:10px;text-align:left;max-width:100%"></p>
+            </div>
+
+            <div class="section-label" style="margin-top:28px">Threats you're most exposed to</div>
+            <div class="threat-grid" id="threats"></div>
+          </div>
+
+          <!-- RIGHT: domains + blueprint -->
+          <div class="results-right">
+            <div class="section-label" style="margin-top:0">Domain breakdown</div>
+            <div class="domain-rows" id="domains"></div>
+
+            <div class="section-label" style="margin-top:32px">Your Airtel Secure blueprint</div>
+            <div class="recs" id="recs"></div>
+          </div>
+
+        </div>
+
+        <!-- Full-width CTA at bottom (copy varies by tier) -->
+        <div class="cta-block" style="margin-top:36px">
+          <h3 id="cta-title">Want this turned into a live architecture?</h3>
+          <p id="cta-body">Book a 30-min session. We'll turn this score into a concrete blueprint with SLA targets and commercial range within 3 business days.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary btn-lg" id="cta-primary" href="https://www.airtel.in/b2b/contact-us">Book architecture session →</a>
+            <button class="btn btn-ghost" id="retake-btn">Retake assessment</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /.quiz-wrap -->
+</main>
+
+<!-- ── AIRTEL BUSINESS FOOTER ── -->
+<footer class="ab_footer">
+  <div class="as-footer-inner">
+    <div class="as-footer-top">
+      <a href="https://www.airtel.in/b2b/" aria-label="Airtel Business">
+        <svg width="90" viewBox="0 0 108 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 22.8315V11.3877H44.944C47.1123 11.3877 48.4369 12.8455 48.4369 14.5899C48.4369 15.5085 47.9645 16.4438 47.1798 16.8989C48.2513 17.354 48.8672 18.3989 48.8672 19.5197C48.8672 21.382 47.357 22.8315 45.2815 22.8315L40 22.8315ZM44.944 16.2584C45.9987 16.2584 46.6483 15.4916 46.6483 14.632C46.6483 13.8062 46.0493 12.9635 44.944 12.9635H41.7802V16.2584H44.944ZM41.7802 21.2472H45.2815C46.4036 21.2472 47.1123 20.4298 47.1123 19.4859C47.1123 18.5843 46.3699 17.75 45.2815 17.75H41.7802V21.2472ZM52.4687 14.7416V19.3006C52.4687 20.6405 53.2027 21.4157 54.443 21.4157C55.7169 21.4157 56.7209 20.6405 56.7209 19.3006V14.7416H58.3914V22.8315H56.7125V21.8118C56.4425 22.2247 55.6747 23 54.1814 23C51.9709 23 50.7982 21.618 50.7982 19.6545V14.7416H52.4687ZM61.5711 20.1264C62.0267 20.9186 62.8029 21.4663 63.8322 21.4663C64.7013 21.4663 65.3509 21.1208 65.3509 20.573C65.3509 19.9748 64.8531 19.7894 63.6635 19.5197C61.9255 19.132 60.6853 18.5843 60.6853 16.9832C60.6853 15.5169 62.0267 14.5731 63.6804 14.5731C65.1906 14.5731 66.3464 15.3568 66.8864 16.2416L65.7643 17.2023C65.3256 16.5787 64.6337 16.0984 63.6804 16.0984C62.8789 16.0984 62.3389 16.4354 62.3389 16.9579C62.3389 17.5731 62.9379 17.7416 64.1275 18.0281C65.8908 18.4579 67.0383 19.0309 67.0383 20.573C67.0383 22.0477 65.5534 23 63.8322 23C62.2545 23 60.9553 22.2753 60.3309 21.1292L61.5711 20.1264ZM69.906 11C70.5135 11 70.9438 11.4214 70.9438 12.0281C70.9438 12.6348 70.5135 13.0562 69.906 13.0562C69.2986 13.0562 68.8767 12.6348 68.8767 12.0281C68.8767 11.4213 69.2985 11 69.906 11ZM69.0707 22.8315V14.7416H70.7413V22.8315H69.0707ZM73.3057 22.8315V14.7416H74.9846V15.7612C75.2546 15.3484 76.0224 14.5731 77.4735 14.5731C79.7009 14.5731 80.8736 15.9551 80.8736 17.9185V22.8315H79.2031V18.2724C79.2031 16.9326 78.4691 16.1574 77.212 16.1574C75.9802 16.1574 74.9762 16.9326 74.9762 18.2724V22.8315H73.3057ZM86.9219 14.5731C89.2842 14.5731 90.8198 16.3259 90.8198 18.4916C90.8198 18.7444 90.8029 19.0056 90.7523 19.2668H84.4667C84.5427 20.4803 85.5804 21.4326 86.9809 21.4326C87.9934 21.4326 88.8033 21.0028 89.4108 20.0506L90.6426 20.9438C89.8917 22.2921 88.4152 23 86.9809 23C84.5343 23 82.7372 21.1966 82.7372 18.795C82.7372 16.3848 84.4667 14.5731 86.9219 14.5731ZM89.124 18.0197C89.0227 16.882 88.0693 16.0815 86.905 16.0815C85.6648 16.0815 84.7199 16.882 84.5089 18.0197H89.124ZM93.4174 20.1264C93.873 20.9186 94.6492 21.4663 95.6785 21.4663C96.5475 21.4663 97.1971 21.1208 97.1971 20.573C97.1971 19.9748 96.6993 19.7894 95.5098 19.5197C93.7717 19.132 92.5315 18.5843 92.5315 16.9832C92.5315 15.5169 93.873 14.5731 95.5266 14.5731C97.0369 14.5731 98.1927 15.3568 98.7327 16.2416L97.6105 17.2023C97.1718 16.5787 96.48 16.0984 95.5266 16.0984C94.7251 16.0984 94.1851 16.4354 94.1851 16.9579C94.1851 17.5731 94.7842 17.7416 95.9738 18.0281C97.7371 18.4579 98.8845 19.0309 98.8845 20.573C98.8845 22.0477 97.3996 23 95.6785 23C94.1008 23 92.8015 22.2753 92.1772 21.1292L93.4174 20.1264ZM101.533 20.1264C101.989 20.9186 102.765 21.4663 103.794 21.4663C104.663 21.4663 105.313 21.1208 105.313 20.573C105.313 19.9748 104.815 19.7894 103.625 19.5197C101.887 19.132 100.647 18.5843 100.647 16.9832C100.647 15.5169 101.989 14.5731 103.642 14.5731C105.152 14.5731 106.308 15.3568 106.848 16.2416L105.726 17.2023C105.287 16.5787 104.596 16.0984 103.642 16.0984C102.841 16.0984 102.301 16.4354 102.301 16.9579C102.301 17.5731 102.9 17.7416 104.089 18.0281C105.853 18.4579 107 19.0309 107 20.573C107 22.0477 105.515 23 103.794 23C102.216 23 100.917 22.2753 100.293 21.1292L101.533 20.1264Z" fill="#474747"/>
+          <path d="M26.8579 18.1642C28.6391 13.6341 27.182 11.3886 23.9345 11.3694C18.7194 11.3386 13.4921 16.8976 8.82871 18.5241C4.57341 20.0083 1.14017 19.4118 0.183261 16.125C-2.52249 6.83122 25.5117 -8.99114 32.9162 6.52823C38.5187 18.5701 21.101 33.7804 10.4054 33.9983C1.88039 34.1719 7.20724 21.1513 13.2564 21.1715C14.6658 21.1762 16.0829 21.7293 16.1767 23.1336C16.2699 24.5265 14.5761 25.6947 13.2488 26.9529C10.9996 29.0848 10.3498 30.638 10.9553 31.377C11.5609 32.116 13.449 31.9728 16.6564 29.8147C21.808 26.3485 25.2272 22.3243 26.8579 18.1642Z" fill="#d40000"/>
+        </svg>
+      </a>
+      <div class="as-footer-links">
+        <a href="https://www.airtel.in/mobile/terms-conditions" target="_blank">Terms &amp; Conditions</a>
+        <a href="https://www.airtel.in/privacy-policy/" target="_blank">Privacy Policy</a>
+        <a href="https://www.airtel.in/cookie-notice/" target="_blank">Cookie Notice</a>
+        <a href="https://www.airtel.in/b2b/contact-us" target="_blank">Contact Us</a>
+      </div>
+    </div>
+    <div class="as-footer-copy">© 2025 Bharti Airtel Limited. Airtel Secure is a product of Airtel Business.</div>
+  </div>
+</footer>
+
+<script src="quiz.js"></script>
+</body>
+</html>

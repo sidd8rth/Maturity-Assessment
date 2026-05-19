@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"/Users/siporwal/Downloads/quiz.js\" \"/Users/siporwal/Documents/Code/Maturity Assessment/quiz.js\")",
+      "Bash(python3 -m http.server 8765)",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "Bash(node --check \"/Users/siporwal/Documents/Code/Maturity Assessment/quiz.js\")",
+      "Bash(awk '/<style>/,/<\\\\/style>/' \"/Users/siporwal/Documents/Code/Maturity Assessment/assessment.html\")",
+      "Bash(awk 'NR<11 || NR>674' assessment.html)",
+      "Bash(awk 'NR==10 {print; print \"  <link rel=\\\\\"stylesheet\\\\\" href=\\\\\"styles.css\\\\\" />\"; next} {print}' /tmp/assessment_no_style.html)"
+    ]
+  }
+}
