@@ -20,10 +20,10 @@
         { term: 'VPN', def: 'Virtual Private Network — creates an encrypted tunnel to your network. Gives broad network access once connected, which is the risk.' },
       ],
       opts: [
-        { t: 'VPN only', sub: 'Everyone connects through a fixed tunnel back to your datacenter, regardless of what app they\'re opening', s: 1 },
-        { t: 'VPN + MFA', sub: 'Same tunnel, but with an OTP or authenticator app layered on top', s: 2 },
-        { t: 'ZTNA for critical apps (Zscaler, Netskope, Prisma Access)', sub: 'Access is granted per app based on who you are and your device health — not a blanket network tunnel', s: 3 },
-        { t: 'Full ZTNA — no VPN dependency', sub: 'Every app is identity-gated and session-inspected. Network-level trust doesn\'t exist', s: 4 },
+        { t: 'VPN only', sub: 'Everyone connects through a fixed tunnel back to your datacenter, regardless of what app they\'re opening', plainSub: 'If an attacker steals one employee\'s password, they reach your whole internal network — like one master key opening every door in the office.', s: 1 },
+        { t: 'VPN + MFA', sub: 'Same tunnel, but with an OTP or authenticator app layered on top', plainSub: 'Better — but attackers still trick employees into approving OTP codes (and modern phishing kits automate this).', s: 2 },
+        { t: 'ZTNA for critical apps (Zscaler, Netskope, Prisma Access)', sub: 'Access is granted per app based on who you are and your device health — not a blanket network tunnel', plainSub: 'Each critical app verifies who you are before opening. Even if a password is stolen, damage is limited to specific apps.', s: 3 },
+        { t: 'Full ZTNA — no VPN dependency', sub: 'Every app is identity-gated and session-inspected. Network-level trust doesn\'t exist', plainSub: 'Stolen credentials are almost useless to attackers — they can only see what that one user was allowed to see, nothing more.', s: 4 },
       ],
     },
     {
@@ -34,10 +34,10 @@
         { term: 'AD / LDAP', def: 'Active Directory / Lightweight Directory Access Protocol — Microsoft\'s systems for managing user accounts, groups, and access policies across your org.' },
       ],
       opts: [
-        { t: 'Shared credentials or static passwords', sub: 'Multiple people use the same login for critical systems', s: 1 },
-        { t: 'Individual accounts + basic AD/LDAP controls', sub: 'Everyone has their own login but access reviews are manual and infrequent', s: 2 },
-        { t: 'Dedicated PAM tool (CyberArk, BeyondTrust, Delinea)', sub: 'Privileged sessions are vaulted, recorded, and access is role-controlled', s: 3 },
-        { t: 'Just-in-time access + zero standing privilege', sub: 'Admin rights are granted only when needed, auto-expire, and every session is audited', s: 4 },
+        { t: 'Shared credentials or static passwords', sub: 'Multiple people use the same login for critical systems', plainSub: 'When something goes wrong, there\'s no way to know who did what. Everyone with the password is a suspect.', s: 1 },
+        { t: 'Individual accounts + basic AD/LDAP controls', sub: 'Everyone has their own login but access reviews are manual and infrequent', plainSub: 'People have their own logins, but stale accounts and old privileges pile up. A former employee\'s account could still be active.', s: 2 },
+        { t: 'Dedicated PAM tool (CyberArk, BeyondTrust, Delinea)', sub: 'Privileged sessions are vaulted, recorded, and access is role-controlled', plainSub: 'Admin access is locked away and recorded. Every privileged action is logged — full audit trail when something goes wrong.', s: 3 },
+        { t: 'Just-in-time access + zero standing privilege', sub: 'Admin rights are granted only when needed, auto-expire, and every session is audited', plainSub: 'Nobody has standing admin rights. Access is granted briefly when needed and revoked automatically — minimising the attack window.', s: 4 },
       ],
     },
     {
@@ -95,10 +95,10 @@
         { term: 'IR retainer', def: 'Incident Response retainer — a pre-paid contract with a forensics firm (e.g. Mandiant, CrowdStrike Services) so they can respond within hours of a breach.' },
       ],
       opts: [
-        { t: 'Honestly, we\'d probably find out hours later', sub: 'No on-call rotation, no automated alerting', s: 1 },
-        { t: 'Someone gets paged and starts investigating manually', sub: 'On-call exists but response depends on the individual', s: 2 },
-        { t: 'SOC or MSSP triages within 15 minutes, runbook invoked', sub: 'Defined process kicks in automatically — roles, escalation path, and IR steps are pre-documented', s: 3 },
-        { t: 'Managed SOC contains within 15 min, IR retainer auto-engaged', sub: 'Containment is automated, external IR firm is on retainer, legal and comms notified per playbook', s: 4 },
+        { t: 'Honestly, we\'d probably find out hours later', sub: 'No on-call rotation, no automated alerting', plainSub: 'By the time someone notices in the morning, the attacker has been free in your systems for 8+ hours — long enough to steal data and deploy ransomware.', s: 1 },
+        { t: 'Someone gets paged and starts investigating manually', sub: 'On-call exists but response depends on the individual', plainSub: 'Response speed depends on who is on call. Some nights contain in 30 min, others take hours — it\'s inconsistent.', s: 2 },
+        { t: 'SOC or MSSP triages within 15 minutes, runbook invoked', sub: 'Defined process kicks in automatically — roles, escalation path, and IR steps are pre-documented', plainSub: 'Within minutes of a breach starting, a trained team is investigating using documented playbooks. Predictable response every time.', s: 3 },
+        { t: 'Managed SOC contains within 15 min, IR retainer auto-engaged', sub: 'Containment is automated, external IR firm is on retainer, legal and comms notified per playbook', plainSub: 'Within 15 minutes you have an expert team containing the breach, a forensics firm engaged, and legal/comms teams notified — everything pre-arranged.', s: 4 },
       ],
     },
     {
@@ -125,10 +125,10 @@
         { term: 'Red team', def: 'A dedicated adversarial exercise where ethical hackers try to breach your environment using the same techniques real attackers use — more realistic than standard VAPT.' },
       ],
       opts: [
-        { t: 'Never, or only after an incident', sub: 'Testing is not planned — it happens when something goes wrong', s: 1 },
-        { t: 'Annual audit, mostly compliance-driven', sub: 'You do it because a regulator or client asks, not proactively', s: 2 },
-        { t: 'Bi-annual VAPT + periodic red team exercises', sub: 'Structured testing cadence with a third-party firm, findings tracked to closure', s: 3 },
-        { t: 'Continuous scanning + quarterly third-party audits + red team on retainer', sub: 'Automated vulnerability scanning runs always, manual testing is frequent and adversarial', s: 4 },
+        { t: 'Never, or only after an incident', sub: 'Testing is not planned — it happens when something goes wrong', plainSub: 'You only learn about weaknesses by being attacked. Each finding costs you a real incident first.', s: 1 },
+        { t: 'Annual audit, mostly compliance-driven', sub: 'You do it because a regulator or client asks, not proactively', plainSub: 'Once a year you check for issues — but attackers find new ways in every week. You\'re months behind, on average.', s: 2 },
+        { t: 'Bi-annual VAPT + periodic red team exercises', sub: 'Structured testing cadence with a third-party firm, findings tracked to closure', plainSub: 'Every six months, experts try to break in and report what they found. You catch issues before attackers do.', s: 3 },
+        { t: 'Continuous scanning + quarterly third-party audits + red team on retainer', sub: 'Automated vulnerability scanning runs always, manual testing is frequent and adversarial', plainSub: 'Your defences are constantly being tested by automated scans AND real experts. New weaknesses surface in days, not months.', s: 4 },
       ],
     },
     {
@@ -139,11 +139,11 @@
         { term: 'XDR', def: 'Extended Detection & Response — unifies signals from endpoint, email, network, and cloud into one detection layer with automated response capability.' },
       ],
       opts: [
-        { t: 'No dedicated endpoint security — bare OS', sub: 'Devices have no security software beyond what the OS shipped with', s: 1 },
-        { t: 'Legacy AV only (Windows Defender basic, McAfee, Symantec AV)', sub: 'Signature-based detection — only catches known threats, misses novel attacks', s: 1 },
-        { t: 'Next-gen AV with some behavioural detection', sub: 'Better than legacy AV but no full telemetry or threat hunting capability', s: 2 },
-        { t: 'EDR deployed across most devices (CrowdStrike, SentinelOne, Defender for Endpoint)', sub: 'Full telemetry, behavioural detection, and alert triage — but managed in-house', s: 3 },
-        { t: 'Managed XDR — unified across endpoint, email, network, and cloud', sub: 'Everything feeds into one detection layer, managed by a SOC with automated response', s: 4 },
+        { t: 'No dedicated endpoint security — bare OS', sub: 'Devices have no security software beyond what the OS shipped with', plainSub: 'Laptops and PCs are essentially open targets. A single phishing email click could install ransomware with nothing to stop it.', s: 1 },
+        { t: 'Legacy AV only (Windows Defender basic, McAfee, Symantec AV)', sub: 'Signature-based detection — only catches known threats, misses novel attacks', plainSub: 'Your antivirus catches old threats but misses anything new. Modern attacks are designed to slip past traditional AV.', s: 1 },
+        { t: 'Next-gen AV with some behavioural detection', sub: 'Better than legacy AV but no full telemetry or threat hunting capability', plainSub: 'Better than basic antivirus, but if a threat does get past, you can\'t easily see what it did or contain it quickly.', s: 2 },
+        { t: 'EDR deployed across most devices (CrowdStrike, SentinelOne, Defender for Endpoint)', sub: 'Full telemetry, behavioural detection, and alert triage — but managed in-house', plainSub: 'Every action on every laptop is recorded. If something bad happens, you can see exactly what, where, and when — and stop it fast.', s: 3 },
+        { t: 'Managed XDR — unified across endpoint, email, network, and cloud', sub: 'Everything feeds into one detection layer, managed by a SOC with automated response', plainSub: 'Threats are detected and contained across laptops, email, network, and cloud — all by an expert team watching around the clock.', s: 4 },
       ],
     },
     {
@@ -246,17 +246,17 @@
     Basic: {
       title: 'Your foundation is exposed. Let\'s fix that fast.',
       body: 'A 30-min session with an Airtel Secure architect. We\'ll prioritise the 2–3 controls that close the most risk in 90 days, with commercial range within 3 business days.',
-      primary: 'Get a fast-track plan →',
+      primary: 'Talk to an expert →',
     },
     Developing: {
       title: 'You\'re on track. Now compress the timeline.',
-      body: 'Book a 30-min session. We\'ll turn this score into a concrete blueprint with SLA targets and commercial range within 3 business days.',
-      primary: 'Book a 30-min session →',
+      body: 'A 30-min session with our practice team. We\'ll turn this score into a concrete blueprint with SLA targets and commercial range within 3 business days.',
+      primary: 'Talk to an expert →',
     },
     Established: {
       title: 'You\'ve earned the right to think bigger.',
       body: 'A 45-min strategy review with our practice lead. We\'ll map your next leap — managed services, zero-trust at scale, or AI-assisted detection — to commercial outcomes.',
-      primary: 'Book a strategy review →',
+      primary: 'Talk to an expert →',
     },
     Advanced: {
       title: 'You don\'t need basics. You need a strategic resilience review.',

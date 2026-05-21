@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tier pill colours */
+.tier-Basic       { background: rgba(212,0,0,0.10);   color: #c00000;  border: 1px solid rgba(212,0,0,0.25); }
+.tier-Developing  { background: rgba(196,132,0,0.10); color: #a36b00;  border: 1px solid rgba(196,132,0,0.25); }
+.tier-Established { background: rgba(0,120,150,0.10); color: #007896;  border: 1px solid rgba(0,120,150,0.25); }
+.tier-Advanced    { background: rgba(30,150,80,0.10); color: #1e7a40;  border: 1px solid rgba(30,150,80,0.25); }
+
+/* Hide scrollbar in firefox/safari for compact layouts */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* Subtle focus ring */
+*:focus-visible {
+  outline: 2px solid rgba(212,0,0,0.4);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
