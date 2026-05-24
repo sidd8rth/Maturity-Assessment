@@ -25,9 +25,9 @@ export function PlainToggle({ on, onChange }: Props) {
           style={{ left: on ? 16 : 2 }}
         />
       </span>
-      <span className="text-[0.82rem] font-semibold text-ink-dark">Plain English mode</span>
+      <span className="text-[0.82rem] font-semibold text-ink-dark">Plain English</span>
       <span className="hidden md:inline text-[0.74rem] text-ink-mute font-normal">
-        Explains each option in plain business terms
+        Explain each option in non-technical language
       </span>
     </label>
   );

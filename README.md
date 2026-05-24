@@ -1,6 +1,6 @@
-# Airtel Secure — Security Maturity Self-Assessment (React)
+# Airtel Secure — Security Maturity Self-Assessment
 
-The React version of the maturity assessment. Same content, scoring, and tier logic as the static HTML version next to this folder — rebuilt with proper component architecture and smooth motion.
+A 12-question security maturity assessment built with Vite + React + TypeScript + Tailwind + Framer Motion. Industry-weighted scoring across 7 domains, business/technical voice on results, plain-English mode for non-technical users, and tier-aware Airtel Secure stack recommendations.
 
 ## Stack
 
@@ -11,7 +11,6 @@ The React version of the maturity assessment. Same content, scoring, and tier lo
 ## Run
 
 ```bash
-cd react-app
 npm install
 npm run dev
 ```

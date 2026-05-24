@@ -78,20 +78,27 @@ export function QuizScreen({
       </div>
 
       {/* Progress */}
-      <div className="mb-6">
-        <div className="flex justify-between text-xs text-ink-mute font-medium mb-2">
-          <span>Question {idx + 1} of {total}</span>
-          <span>{pct}%</span>
-        </div>
-        <div className="h-[3px] rounded-full bg-border overflow-hidden">
-          <motion.div
-            className="h-full bg-airtel-red"
-            initial={false}
-            animate={{ width: `${pct}%` }}
-            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-          />
-        </div>
-      </div>
+      {(() => {
+        const remainingQs   = total - idx;
+        const minsLeftRough = Math.max(1, Math.ceil(remainingQs * 18 / 60));
+        const timeLeftText  = minsLeftRough === 1 ? '~1 min left' : `~${minsLeftRough} mins left`;
+        return (
+          <div className="mb-6">
+            <div className="flex justify-between text-xs text-ink-mute font-medium mb-2">
+              <span>{pct}% done</span>
+              <span>{timeLeftText}</span>
+            </div>
+            <div className="h-[3px] rounded-full bg-border overflow-hidden">
+              <motion.div
+                className="h-full bg-airtel-red"
+                initial={false}
+                animate={{ width: `${pct}%` }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              />
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Card */}
       <motion.div
@@ -117,7 +124,7 @@ export function QuizScreen({
               {q.q}
             </h2>
 
-            {/* Glossary chips — hidden when plain mode is on */}
+            {/* Glossary chips, hidden when plain mode is on */}
             <AnimatePresence>
               {q.terms && q.terms.length > 0 && !plainMode && (
                 <motion.div

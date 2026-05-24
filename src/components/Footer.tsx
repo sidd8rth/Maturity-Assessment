@@ -1,12 +1,12 @@
-import { AirtelLogo } from './AirtelLogo';
+import { AirtelSecureLogo } from './AirtelSecureLogo';
 
 export function Footer() {
   return (
     <footer className="bg-white border-t border-border mt-auto">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-5">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 border-b border-border mb-3.5">
-          <a href="https://www.airtel.in/b2b/" aria-label="Airtel Business">
-            <AirtelLogo width={84} textColor="#474747" />
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-border mb-3.5">
+          <a href="https://www.airtel.in/b2b/" aria-label="Airtel Secure" className="inline-flex">
+            <AirtelSecureLogo size={32} />
           </a>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             {[

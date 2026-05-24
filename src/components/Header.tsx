@@ -1,11 +1,11 @@
-import { AirtelLogo } from './AirtelLogo';
+import { AirtelSecureLogo } from './AirtelSecureLogo';
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm backdrop-blur">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3">
-        <a href="https://www.airtel.in/b2b/" className="flex items-center gap-2.5 flex-shrink-0">
-          <AirtelLogo width={100} />
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-[64px] flex items-center justify-between gap-3">
+        <a href="https://www.airtel.in/b2b/" className="flex items-center flex-shrink-0">
+          <AirtelSecureLogo size={32} />
         </a>
         <div className="flex items-center gap-3 sm:gap-5">
           <span className="hidden md:inline text-[0.78rem] font-semibold text-ink-mute uppercase tracking-wider">
