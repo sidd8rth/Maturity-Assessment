@@ -19,6 +19,9 @@ export default {
           'red-ring': 'rgba(212,0,0,0.20)',
           navy: '#101418',
           'navy-hover': '#394556',
+          /** Brand blue-grey from b2b.css; matches the Airtel Secure logo colour. */
+          'secure-grey': '#374150',
+          'secure-grey-hover': '#4a5566',
         },
         bg: {
           DEFAULT: '#f3f4f7',

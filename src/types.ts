@@ -32,12 +32,12 @@ export interface Question {
 
 export type Domain =
   | 'Identity & Access'
-  | 'Network & Perimeter'
+  | 'Network Security'
   | 'Detection & Response'
   | 'Governance & Compliance'
-  | 'Endpoint & Workforce'
-  | 'Data & Cloud'
-  | 'AI & Emerging';
+  | 'Workforce Security'
+  | 'Workload Security'
+  | 'AI Technology';
 
 export type Tier = 'Basic' | 'Developing' | 'Established' | 'Advanced';
 export type ResultsView = 'business' | 'technical';
@@ -50,7 +50,8 @@ export interface DomainScore {
 export interface StackInfo {
   title: string;
   desc: string;
-  href: string;
+  /** Optional — if omitted, the card renders as non-clickable text with no "Explore" link. */
+  href?: string;
 }
 
 export interface ThreatInfo {

@@ -7,7 +7,16 @@
       "Bash(node --check \"/Users/siporwal/Documents/Code/Maturity Assessment/quiz.js\")",
       "Bash(awk '/<style>/,/<\\\\/style>/' \"/Users/siporwal/Documents/Code/Maturity Assessment/assessment.html\")",
       "Bash(awk 'NR<11 || NR>674' assessment.html)",
-      "Bash(awk 'NR==10 {print; print \"  <link rel=\\\\\"stylesheet\\\\\" href=\\\\\"styles.css\\\\\" />\"; next} {print}' /tmp/assessment_no_style.html)"
+      "Bash(awk 'NR==10 {print; print \"  <link rel=\\\\\"stylesheet\\\\\" href=\\\\\"styles.css\\\\\" />\"; next} {print}' /tmp/assessment_no_style.html)",
+      "Bash(git checkout *)",
+      "Bash(sed -i '' 's/DPDP Act/DPDPA/g' quiz.js react-app/src/data/questions.ts)",
+      "Bash(grep -rn \"DPDP Act\" quiz.js react-app/src/data/questions.ts assessment.html)",
+      "Bash(grep -n \"'Data\\\\|'Network\\\\|'Endpoint\\\\|'AI \" src/lib/*.ts)",
+      "Bash(grep -rn \"'Data & Cloud\\\\|'Network & Perimeter\\\\|'Endpoint & Workforce\\\\|'AI & Emerging\" src/components/ src/screens/)",
+      "Skill(anthropic-skills:humanizer)",
+      "Skill(anthropic-skills:humanizer:*)",
+      "Bash(rm -rf dist)",
+      "Bash(npm run *)"
     ]
   }
 }

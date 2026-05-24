@@ -92,7 +92,7 @@ export function ResultsScreen({ answers, industry, onRetake }: Props) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.4 }}
-        className="mt-10 p-7 sm:p-9 rounded-2xl bg-airtel-navy text-white text-center"
+        className="mt-10 p-7 sm:p-9 rounded-2xl bg-airtel-secure-grey text-white text-center"
       >
         <AnimatePresence mode="wait">
           <motion.div key={tier} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>

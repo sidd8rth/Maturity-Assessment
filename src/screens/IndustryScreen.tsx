@@ -30,7 +30,7 @@ export function IndustryScreen({
         Which industry are you from?
       </h2>
       <p className="text-ink-mute text-[0.86rem] mt-1">
-        We weight your score against what matters most for your sector.
+        We weigh your score against what is most critical for your vertical.
       </p>
 
       <motion.div
