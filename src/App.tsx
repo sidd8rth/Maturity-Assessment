@@ -33,13 +33,10 @@ export default function App() {
   }
 
   const handleRetake = useCallback(() => {
-    window.scrollTo(0, 0);
-    setIndustry(null);
-    setEnvironment(null);
-    setOrgSize(null);
-    setStep(0);
-    setAnswers(new Array(QUESTIONS.length).fill(null));
-    setStage('intro');
+    // Hard reload guarantees clean state on every retake, regardless of
+    // which screen / button triggered it. No animation edge cases, no
+    // stale React state, no AnimatePresence timing issues.
+    window.location.reload();
   }, []);
 
   function goToQuiz() {
