@@ -1,15 +1,20 @@
 import { motion } from 'framer-motion';
-import { INDUSTRIES } from '../data/industries';
-import type { IndustryId } from '../types';
+import type { Environment } from '../types';
+
+const OPTIONS: { id: Environment; label: string; sub: string; icon: string }[] = [
+  { id: 'on_prem',     label: 'On-premises', sub: 'Mostly on-prem infrastructure',     icon: '🏢' },
+  { id: 'hybrid',      label: 'Hybrid',       sub: 'Mix of on-prem and cloud',          icon: '🔀' },
+  { id: 'multi_cloud', label: 'Cloud-first',  sub: 'Multi-cloud or cloud-native stack', icon: '☁️' },
+];
 
 interface Props {
-  selected: IndustryId | null;
-  onSelect: (id: IndustryId) => void;
+  selected: Environment | null;
+  onSelect: (env: Environment) => void;
   onBack: () => void;
   onNext: () => void;
 }
 
-export function IndustryScreen({ selected, onSelect, onBack, onNext }: Props) {
+export function EnvironmentScreen({ selected, onSelect, onBack, onNext }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -19,35 +24,35 @@ export function IndustryScreen({ selected, onSelect, onBack, onNext }: Props) {
       className="bg-white border border-border rounded-2xl shadow-md p-6 sm:p-9 md:p-11"
     >
       <h2 className="text-[1.2rem] sm:text-[1.35rem] font-bold leading-snug tracking-tight text-ink-dark">
-        Which industry are you from?
+        Where do your workloads run?
       </h2>
       <p className="text-ink-mute text-[0.86rem] mt-1">
-        We weigh your score against what is most critical for your vertical.
+        We use this to pick the right architecture controls for your environment.
       </p>
 
-      <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 gap-3 my-6">
-        {INDUSTRIES.map((ind, i) => {
-          const isSelected = selected === ind.id;
+      <motion.div layout className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-6">
+        {OPTIONS.map((o, i) => {
+          const isSelected = selected === o.id;
           return (
             <motion.button
-              key={ind.id}
+              key={o.id}
               type="button"
-              onClick={() => onSelect(ind.id)}
+              onClick={() => onSelect(o.id)}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: i * 0.04 }}
+              transition={{ duration: 0.3, delay: i * 0.05 }}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className={`text-left p-4 rounded-xl border bg-bg-secondary transition-colors ${
+              className={`text-left p-5 rounded-xl border bg-bg-secondary transition-colors ${
                 isSelected
                   ? 'border-airtel-red bg-airtel-red-light'
                   : 'border-border hover:border-airtel-red hover:bg-airtel-red-light'
               }`}
               style={isSelected ? { boxShadow: '0 0 0 3px rgba(212,0,0,0.20)' } : undefined}
             >
-              <div className="text-2xl mb-1.5">{ind.icon}</div>
-              <div className="font-bold text-[0.9rem] text-ink-dark">{ind.label}</div>
-              <div className="text-[0.74rem] text-ink-mute mt-0.5 leading-snug">{ind.sub}</div>
+              <div className="text-2xl mb-2">{o.icon}</div>
+              <div className="font-bold text-[0.95rem] text-ink-dark">{o.label}</div>
+              <div className="text-[0.78rem] text-ink-mute mt-1 leading-snug">{o.sub}</div>
             </motion.button>
           );
         })}

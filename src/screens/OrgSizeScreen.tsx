@@ -1,15 +1,21 @@
 import { motion } from 'framer-motion';
-import { INDUSTRIES } from '../data/industries';
-import type { IndustryId } from '../types';
+import type { OrgSize } from '../types';
+
+const OPTIONS: { id: OrgSize; label: string; sub: string }[] = [
+  { id: 'small',  label: 'Under 500',      sub: 'Small team, lean security posture' },
+  { id: 'mid',    label: '500 – 2,000',    sub: 'Growing complexity, structured controls' },
+  { id: 'large',  label: '2,000 – 10,000', sub: 'Enterprise scale, multi-team security' },
+  { id: 'xlarge', label: '10,000+',         sub: 'Large enterprise, full programme' },
+];
 
 interface Props {
-  selected: IndustryId | null;
-  onSelect: (id: IndustryId) => void;
+  selected: OrgSize | null;
+  onSelect: (s: OrgSize) => void;
   onBack: () => void;
   onNext: () => void;
 }
 
-export function IndustryScreen({ selected, onSelect, onBack, onNext }: Props) {
+export function OrgSizeScreen({ selected, onSelect, onBack, onNext }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -19,20 +25,20 @@ export function IndustryScreen({ selected, onSelect, onBack, onNext }: Props) {
       className="bg-white border border-border rounded-2xl shadow-md p-6 sm:p-9 md:p-11"
     >
       <h2 className="text-[1.2rem] sm:text-[1.35rem] font-bold leading-snug tracking-tight text-ink-dark">
-        Which industry are you from?
+        How large is your organisation?
       </h2>
       <p className="text-ink-mute text-[0.86rem] mt-1">
-        We weigh your score against what is most critical for your vertical.
+        Headcount roughly. We use this to size the architecture recommendations appropriately.
       </p>
 
-      <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 gap-3 my-6">
-        {INDUSTRIES.map((ind, i) => {
-          const isSelected = selected === ind.id;
+      <motion.div layout className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
+        {OPTIONS.map((o, i) => {
+          const isSelected = selected === o.id;
           return (
             <motion.button
-              key={ind.id}
+              key={o.id}
               type="button"
-              onClick={() => onSelect(ind.id)}
+              onClick={() => onSelect(o.id)}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: i * 0.04 }}
@@ -45,9 +51,8 @@ export function IndustryScreen({ selected, onSelect, onBack, onNext }: Props) {
               }`}
               style={isSelected ? { boxShadow: '0 0 0 3px rgba(212,0,0,0.20)' } : undefined}
             >
-              <div className="text-2xl mb-1.5">{ind.icon}</div>
-              <div className="font-bold text-[0.9rem] text-ink-dark">{ind.label}</div>
-              <div className="text-[0.74rem] text-ink-mute mt-0.5 leading-snug">{ind.sub}</div>
+              <div className="font-bold text-[0.92rem] text-ink-dark">{o.label}</div>
+              <div className="text-[0.74rem] text-ink-mute mt-1 leading-snug">{o.sub}</div>
             </motion.button>
           );
         })}
@@ -65,7 +70,7 @@ export function IndustryScreen({ selected, onSelect, onBack, onNext }: Props) {
           disabled={!selected}
           className="inline-flex items-center gap-2 bg-airtel-navy text-white hover:bg-airtel-navy-hover disabled:opacity-40 disabled:cursor-not-allowed px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors"
         >
-          Continue →
+          Start assessment →
         </button>
       </div>
     </motion.div>

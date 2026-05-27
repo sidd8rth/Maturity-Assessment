@@ -41,10 +41,10 @@ export const DOMAIN_STACK: Record<Domain, { primary: StackKey; secondary: StackK
 
 /** For tier === Advanced: hand-picked per industry, not domain-gap driven. */
 export const ADVANCED_PICKS: Record<IndustryId, StackKey[]> = {
-  bfsi:   ['Red Team Retainer', 'Threat Intelligence', 'CISO Advisory'],
-  health: ['Supply Chain Risk', 'Cyber Resilience',    'AI Security'],
-  psu:    ['Threat Intelligence','Cyber Resilience',   'CISO Advisory'],
-  mfg:    ['Cyber Resilience',   'Supply Chain Risk',  'Red Team Retainer'],
-  it:     ['AI Security',        'Red Team Retainer',  'Supply Chain Risk'],
-  other:  ['Red Team Retainer',  'Supply Chain Risk',  'CISO Advisory'],
+  bfsi:             ['Red Team Retainer',  'Threat Intelligence', 'CISO Advisory'],
+  healthcare:       ['Supply Chain Risk',  'Cyber Resilience',    'AI Security'],
+  govt_psu:         ['Threat Intelligence','Cyber Resilience',    'CISO Advisory'],
+  manufacturing_ot: ['Cyber Resilience',   'Supply Chain Risk',   'Red Team Retainer'],
+  it_ites:          ['AI Security',        'Red Team Retainer',   'Supply Chain Risk'],
+  retail_ecomm:     ['Supply Chain Risk',  'AI Security',         'CISO Advisory'],
 };

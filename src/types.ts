@@ -1,4 +1,14 @@
-export type IndustryId = 'bfsi' | 'health' | 'psu' | 'mfg' | 'it' | 'other';
+/** Canonical industry IDs, aligned with architecture/data/capabilities.json */
+export type IndustryId =
+  | 'bfsi'
+  | 'manufacturing_ot'
+  | 'healthcare'
+  | 'it_ites'
+  | 'retail_ecomm'
+  | 'govt_psu';
+
+export type Environment = 'on_prem' | 'hybrid' | 'multi_cloud';
+export type OrgSize = 'small' | 'mid' | 'large' | 'xlarge';
 
 export interface Industry {
   id: IndustryId;

@@ -7,7 +7,7 @@ interface Props {
 const BRAND_GREY = '#374150';
 
 /**
- * Airtel Secure logo — swirl mark + "Secure" wordmark in brand blue-grey.
+ * Airtel Secure logo: swirl mark + "Secure" wordmark in brand blue-grey.
  * The swirl is the same Airtel mark as the parent brand, just recoloured.
  */
 export function AirtelSecureLogo({ size = 52, className }: Props) {

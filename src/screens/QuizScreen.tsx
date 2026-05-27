@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { QUESTIONS } from '../data/questions';
 import { OptionTile } from '../components/OptionTile';
-import { PlainToggle } from '../components/PlainToggle';
 import { TermChip } from '../components/TermChip';
 
 const AUTO_ADVANCE_MS = 700;
@@ -10,16 +9,14 @@ const AUTO_ADVANCE_MS = 700;
 interface Props {
   step: number;
   answers: (number | null)[];
-  plainMode: boolean;
   onSelect: (questionIdx: number, optionIdx: number) => void;
-  onPlainModeChange: (next: boolean) => void;
   onBack: () => void;
   onNext: () => void;
   onFinish: () => void;
 }
 
 export function QuizScreen({
-  step, answers, plainMode, onSelect, onPlainModeChange, onBack, onNext, onFinish,
+  step, answers, onSelect, onBack, onNext, onFinish,
 }: Props) {
   const total = QUESTIONS.length;
   const q = QUESTIONS[step];
@@ -29,7 +26,19 @@ export function QuizScreen({
   const pct = Math.round((idx / total) * 100);
 
   const [advancing, setAdvancing] = useState(false);
+  const [openTerm, setOpenTerm] = useState<string | null>(null);
   const timerRef = useRef<number | null>(null);
+
+  // Close open glossary term on outside click + reset when question changes
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.term-chip-wrapper')) setOpenTerm(null);
+    };
+    document.addEventListener('click', handler);
+    return () => document.removeEventListener('click', handler);
+  }, []);
+  useEffect(() => { setOpenTerm(null); }, [step]);
 
   // Reset advancing-state when the question changes
   useEffect(() => {
@@ -66,17 +75,11 @@ export function QuizScreen({
 
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.3 }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.2 }}
     >
-      {/* Plain English toggle */}
-      <div className="flex justify-end mb-4">
-        <PlainToggle on={plainMode} onChange={onPlainModeChange} />
-      </div>
-
       {/* Progress */}
       {(() => {
         const remainingQs   = total - idx;
@@ -124,23 +127,23 @@ export function QuizScreen({
               {q.q}
             </h2>
 
-            {/* Glossary chips, hidden when plain mode is on */}
-            <AnimatePresence>
-              {q.terms && q.terms.length > 0 && !plainMode && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center gap-2 flex-wrap mb-4 overflow-visible"
-                >
-                  <span className="text-[0.7rem] font-bold uppercase tracking-widest text-ink-mute mr-1">
-                    Key terms:
+            {/* Glossary chips, accordion: opening one closes the others */}
+            {q.terms && q.terms.length > 0 && (
+              <div className="flex items-center gap-2 flex-wrap mb-4 overflow-visible">
+                <span className="text-[0.7rem] font-bold uppercase tracking-widest text-ink-mute mr-1">
+                  Key terms:
+                </span>
+                {q.terms.map(t => (
+                  <span key={t.term} className="term-chip-wrapper">
+                    <TermChip
+                      term={t}
+                      open={openTerm === t.term}
+                      onToggle={() => setOpenTerm(prev => prev === t.term ? null : t.term)}
+                    />
                   </span>
-                  {q.terms.map(t => <TermChip key={t.term} term={t} />)}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                ))}
+              </div>
+            )}
 
             <motion.div
               layout
@@ -152,7 +155,7 @@ export function QuizScreen({
                   option={opt}
                   index={i}
                   selected={answers[idx] === i}
-                  plainMode={plainMode}
+                  plainMode={false}
                   onSelect={() => handleSelect(i)}
                 />
               ))}
@@ -184,7 +187,6 @@ export function QuizScreen({
         <div className="flex justify-between items-center gap-3 flex-wrap mt-7">
           <button
             onClick={handleBack}
-            style={{ visibility: idx === 0 ? 'hidden' : 'visible' }}
             className="inline-flex items-center gap-2 bg-transparent text-airtel-navy hover:bg-black/5 border border-border hover:border-airtel-navy px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors"
           >
             ← Back
