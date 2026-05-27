@@ -433,7 +433,7 @@ export function ResultsScreen({ answers, industry, environment, orgSize, onRetak
               exit={{ opacity: 0, y: 20, scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 350, damping: 32 }}
               onClick={e => e.stopPropagation()}
-              className="relative bg-white w-full sm:max-w-[440px] sm:rounded-2xl rounded-t-2xl shadow-xl p-7 sm:p-8"
+              className="relative bg-white w-full sm:max-w-[480px] sm:rounded-2xl rounded-t-2xl shadow-xl p-7 sm:p-8"
             >
               <button
                 type="button"
@@ -459,7 +459,7 @@ export function ResultsScreen({ answers, industry, environment, orgSize, onRetak
                 Download your full report?
               </h3>
               <p className="text-[0.88rem] text-ink-sub text-center leading-relaxed mb-4">
-                Your {overall}/100 posture report, recommended architecture, and tier-specific next steps. Saved as a PDF you can share with your team.
+                Your posture report, recommended architecture, and tier-specific next steps. Saved as a PDF you can share with your team.
               </p>
 
               {overall < 50 && (
@@ -467,6 +467,15 @@ export function ResultsScreen({ answers, industry, environment, orgSize, onRetak
                   <p className="text-[0.82rem] leading-relaxed text-airtel-red">
                     <span className="font-bold">Your score is low.</span>{' '}
                     <span className="text-ink-dark">Don't wait on the PDF. Talk to an Airtel Secure expert and get the top 3 fixes locked in this week.</span>
+                  </p>
+                </div>
+              )}
+
+              {overall >= 80 && (
+                <div className="mb-5 rounded-lg border border-airtel-navy/20 bg-airtel-navy/[0.04] px-3.5 py-2.5">
+                  <p className="text-[0.82rem] leading-relaxed text-ink-dark">
+                    <span className="font-bold text-airtel-navy">You're in the top decile.</span>{' '}
+                    Skip the basics. Book a CISO advisory call with our senior practitioners on adversary emulation, supply-chain risk, and AI security.
                   </p>
                 </div>
               )}
@@ -479,7 +488,7 @@ export function ResultsScreen({ answers, industry, environment, orgSize, onRetak
                   onClick={() => setDownloadPromptOpen(false)}
                   className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg border border-airtel-navy bg-white hover:bg-bg-secondary text-airtel-navy font-semibold text-[0.86rem] transition-colors"
                 >
-                  Talk to an expert
+                  {overall >= 80 ? 'Book advisory call' : 'Talk to an expert'}
                 </a>
                 <button
                   type="button"
