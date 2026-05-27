@@ -19,7 +19,7 @@ export function Footer() {
               { label: 'Terms & Conditions', href: 'https://www.airtel.in/mobile/terms-conditions' },
               { label: 'Privacy Policy',    href: 'https://www.airtel.in/privacy-policy/' },
               { label: 'Cookie Notice',     href: 'https://www.airtel.in/cookie-notice/' },
-              { label: 'Contact Us',        href: 'https://www.airtel.in/b2b/contact-us' },
+              { label: 'Contact Us',        href: 'https://www.airtel.in/b2b/contact-us?utm_source=referral&utm_medium=bamboobox&utm_campaign=airtel+secure&utm_id=security+assessment' },
             ].map(({ label, href }) => (
               <li key={label}>
                 <a href={href} target="_blank" rel="noopener noreferrer" className="text-[0.8rem] text-ink-mute hover:text-airtel-red transition-colors">

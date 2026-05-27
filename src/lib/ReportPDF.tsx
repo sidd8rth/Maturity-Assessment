@@ -577,7 +577,7 @@ export function ReportPDF({
             <View style={s.legendItem}>
               <View style={[s.legendSwatch, { backgroundColor: STATUS_STYLE.foundational.bg, borderColor: STATUS_STYLE.foundational.border }]} />
               <Text style={s.legendText}>
-                <Text style={[s.legendLabel, { color: STATUS_STYLE.foundational.fg }]}>CORE · Foundational</Text>
+                <Text style={[s.legendLabel, { color: STATUS_STYLE.foundational.fg }]}>CORE · Core control</Text>
                 {'\n'}Core control for your industry. Force-included.
               </Text>
             </View>
@@ -689,7 +689,7 @@ export function ReportPDF({
           <Text style={s.closingEyebrow}>What is next</Text>
           <Text style={s.closingTitle}>{cta.title}</Text>
           <Text style={s.closingBody}>{cta.body}</Text>
-          <Link src="https://www.airtel.in/b2b/contact-us" style={s.ctaButton}>
+          <Link src="https://www.airtel.in/b2b/contact-us?utm_source=referral&utm_medium=bamboobox&utm_campaign=airtel+secure&utm_id=security+assessment" style={s.ctaButton}>
             <Text style={s.ctaButtonText}>Talk to an Airtel Secure expert  →</Text>
           </Link>
 

@@ -308,7 +308,7 @@ export function ResultsScreen({ answers, industry, environment, orgSize, onRetak
                       {ctaTitle}
                     </p>
                     <a
-                      href="https://www.airtel.in/b2b/contact-us"
+                      href="https://www.airtel.in/b2b/contact-us?utm_source=referral&utm_medium=bamboobox&utm_campaign=airtel+secure&utm_id=security+assessment"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex w-full items-center justify-center gap-2 bg-airtel-red hover:bg-airtel-red-hover text-white font-semibold text-[0.88rem] px-4 py-2.5 rounded-lg transition-colors"
@@ -468,29 +468,19 @@ export function ResultsScreen({ answers, industry, environment, orgSize, onRetak
                     <span className="font-bold">Your score is low.</span>{' '}
                     <span className="text-ink-dark">Don't wait on the PDF. Talk to an Airtel Secure expert and get the top 3 fixes locked in this week.</span>
                   </p>
-                  <a
-                    href="https://www.airtel.in/b2b/contact-us"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setDownloadPromptOpen(false)}
-                    className="mt-2 inline-flex items-center gap-1 text-[0.82rem] font-bold text-airtel-red hover:text-airtel-red-hover"
-                  >
-                    Talk to an expert
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
                 </div>
               )}
 
               <div className="flex flex-col sm:flex-row gap-2.5">
-                <button
-                  type="button"
+                <a
+                  href="https://www.airtel.in/b2b/contact-us?utm_source=referral&utm_medium=bamboobox&utm_campaign=airtel+secure&utm_id=security+assessment"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setDownloadPromptOpen(false)}
-                  className="flex-1 px-4 py-2.5 rounded-lg border border-border text-ink-sub hover:text-ink-dark hover:bg-bg-secondary font-semibold text-[0.86rem] transition-colors"
+                  className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg border border-airtel-navy bg-white hover:bg-bg-secondary text-airtel-navy font-semibold text-[0.86rem] transition-colors"
                 >
-                  Maybe later
-                </button>
+                  Talk to an expert
+                </a>
                 <button
                   type="button"
                   disabled={downloading}

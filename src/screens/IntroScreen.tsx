@@ -17,11 +17,11 @@ export function IntroScreen({ onStart }: Props) {
         12 questions · ~4 minutes
       </span>
       <h1 className="text-[1.65rem] sm:text-[2.2rem] font-extrabold leading-tight tracking-tight text-ink-dark mb-3.5">
-        How ready is<br />
-        <span className="text-airtel-red">your security stack?</span>
+        Assess your enterprise<br />
+        <span className="text-airtel-red">CyberSecurity Readiness</span>
       </h1>
       <p className="text-ink-mute text-[0.95rem] sm:text-base max-w-xl mb-8 leading-relaxed">
-        12 questions across 7 domains. Get your score, domain breakdown, and a personalised Airtel Secure blueprint. Generated instantly, all in your browser.
+        12 questions across 7 domains. Get your score, domain breakdown, and a personalised Airtel Secure blueprint.
       </p>
       <div className="flex justify-end">
         <motion.button

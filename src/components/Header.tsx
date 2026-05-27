@@ -45,7 +45,7 @@ export function Header({ onRetake }: Props) {
             </button>
           )}
           <a
-            href="https://www.airtel.in/b2b/contact-us"
+            href="https://www.airtel.in/b2b/contact-us?utm_source=referral&utm_medium=bamboobox&utm_campaign=airtel+secure&utm_id=security+assessment"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center bg-airtel-navy hover:bg-airtel-navy-hover text-white px-3 sm:px-4 py-2 rounded-lg text-[0.78rem] sm:text-sm font-semibold transition-colors whitespace-nowrap"

@@ -158,7 +158,7 @@ export default function Diagram({ activeModules, futureState, advisoryItems, inp
       <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-gray-500">
         <span className="inline-flex items-center gap-1.5">
           <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#FFE5E5] border border-[#E40000]" />
-          <span><b className="text-[#E40000]">Foundational</b> · core control for your industry</span>
+          <span><b className="text-[#E40000]">Core</b> · core control for your industry</span>
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="inline-block w-2.5 h-2.5 rounded-sm bg-amber-50 border border-amber-500" />
@@ -294,7 +294,7 @@ function ModuleChip({
 
 const STATUS_INFO: Record<string, { label: string; tone: string; bg: string; explain: string }> = {
   foundational: {
-    label: 'Foundational',
+    label: 'Core',
     tone: 'text-[#E40000]',
     bg: 'bg-[#FFE5E5]',
     explain: 'Core control for your industry. Force-included regardless of score.',
