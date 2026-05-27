@@ -17,11 +17,11 @@ export function IntroScreen({ onStart }: Props) {
         12 questions · ~4 minutes
       </span>
       <h1 className="text-[1.65rem] sm:text-[2.2rem] font-extrabold leading-tight tracking-tight text-ink-dark mb-3.5">
-        Test out how secure is<br />
-        <span className="text-airtel-red">your organisation?</span>
+        How ready is<br />
+        <span className="text-airtel-red">your security stack?</span>
       </h1>
       <p className="text-ink-mute text-[0.95rem] sm:text-base max-w-xl mb-8 leading-relaxed">
-        12 questions across 7 domains. Get your score, domain breakdown, and a personalised Airtel Secure blueprint, generated instantly, all in your browser.
+        12 questions across 7 domains. Get your score, domain breakdown, and a personalised Airtel Secure blueprint. Generated instantly, all in your browser.
       </p>
       <div className="flex justify-end">
         <motion.button
@@ -30,7 +30,7 @@ export function IntroScreen({ onStart }: Props) {
           onClick={onStart}
           className="inline-flex items-center gap-2 bg-airtel-navy hover:bg-airtel-navy-hover text-white font-semibold text-[0.96rem] px-7 py-3.5 rounded-lg transition-colors"
         >
-          Start assessment →
+          Start readiness check →
         </motion.button>
       </div>
     </motion.div>

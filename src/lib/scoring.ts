@@ -11,7 +11,7 @@ export function computeScores(
   answers: (number | null)[],
   industry: IndustryId,
 ): { domainScores: DomainScore[]; overall: number; tier: Tier } {
-  const weights = WEIGHTS[industry] ?? WEIGHTS.other;
+  const weights = WEIGHTS[industry] ?? WEIGHTS.it_ites;
 
   // Aggregate raw scores per domain
   const raw: Partial<Record<Domain, { total: number; count: number }>> = {};

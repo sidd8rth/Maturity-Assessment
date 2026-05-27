@@ -14,10 +14,10 @@ export function buildRecommendations(
   tier: Tier,
 ): StackKey[] {
   if (tier === 'Advanced') {
-    return (ADVANCED_PICKS[industry] ?? ADVANCED_PICKS.other).slice(0, 3);
+    return (ADVANCED_PICKS[industry] ?? ADVANCED_PICKS.it_ites).slice(0, 3);
   }
 
-  const weights = WEIGHTS[industry] ?? WEIGHTS.other;
+  const weights = WEIGHTS[industry] ?? WEIGHTS.it_ites;
   const weighted = domainScores
     .map(d => ({ name: d.name, weightedPct: d.pct * (weights[d.name as Domain] ?? 0) }))
     .sort((a, b) => a.weightedPct - b.weightedPct);

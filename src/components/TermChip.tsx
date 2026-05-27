@@ -1,35 +1,29 @@
-import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Term } from '../types';
 
 interface Props {
   term: Term;
+  /** Controlled-open mode: when provided, the parent owns the state (accordion behavior). */
+  open?: boolean;
+  onToggle?: () => void;
 }
 
-export function TermChip({ term }: Props) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener('click', handler);
-    return () => document.removeEventListener('click', handler);
-  }, [open]);
-
+export function TermChip({ term, open = false, onToggle }: Props) {
   return (
-    <div ref={ref} className="relative inline-block">
+    <div className="relative inline-block">
       <button
         type="button"
-        onClick={(e) => { e.stopPropagation(); setOpen(o => !o); }}
-        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-bg-secondary border border-border hover:border-airtel-red text-[0.74rem] font-semibold text-ink-dark transition-colors"
+        onClick={(e) => { e.stopPropagation(); onToggle?.(); }}
+        className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border text-[0.74rem] font-semibold transition-colors ${
+          open
+            ? 'border-airtel-red bg-airtel-red-light text-airtel-red'
+            : 'border-border bg-bg-secondary text-ink-dark hover:border-airtel-red'
+        }`}
         aria-label={`What is ${term.term}?`}
         aria-expanded={open}
       >
         {term.term}
-        <span className="text-airtel-red text-[0.7rem] font-bold">ℹ</span>
+        <span className={`text-[0.7rem] font-bold ${open ? 'text-airtel-red' : 'text-airtel-red'}`}>ℹ</span>
       </button>
       <AnimatePresence>
         {open && (

@@ -5,22 +5,24 @@ import { Footer } from './components/Footer';
 import { Breadcrumb } from './components/Breadcrumb';
 import { IntroScreen } from './screens/IntroScreen';
 import { IndustryScreen } from './screens/IndustryScreen';
+import { EnvironmentScreen } from './screens/EnvironmentScreen';
+import { OrgSizeScreen } from './screens/OrgSizeScreen';
 import { QuizScreen } from './screens/QuizScreen';
 import { ResultsScreen } from './screens/ResultsScreen';
 import { QUESTIONS } from './data/questions';
-import type { IndustryId } from './types';
+import type { IndustryId, Environment, OrgSize } from './types';
 
-type Stage = 'intro' | 'industry' | 'quiz' | 'results';
+type Stage = 'intro' | 'industry' | 'environment' | 'orgsize' | 'quiz' | 'results';
 
 export default function App() {
   const [stage, setStage]               = useState<Stage>('intro');
   const [industry, setIndustry]         = useState<IndustryId | null>(null);
-  const [otherLabel, setOtherLabel]     = useState('');
+  const [environment, setEnvironment]   = useState<Environment | null>(null);
+  const [orgSize, setOrgSize]           = useState<OrgSize | null>(null);
   const [step, setStep]                 = useState(0);
   const [answers, setAnswers]           = useState<(number | null)[]>(() =>
     new Array(QUESTIONS.length).fill(null),
   );
-  const [plainMode, setPlainMode]       = useState(false);
 
   function handleSelect(qIdx: number, optIdx: number) {
     setAnswers(prev => {
@@ -31,51 +33,66 @@ export default function App() {
   }
 
   function handleRetake() {
-    setStage('intro');
+    window.scrollTo({ top: 0 });
     setIndustry(null);
-    setOtherLabel('');
+    setEnvironment(null);
+    setOrgSize(null);
     setStep(0);
     setAnswers(new Array(QUESTIONS.length).fill(null));
-    setPlainMode(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setStage('intro');
   }
 
   function goToQuiz() {
     setStage('quiz');
     setStep(0);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   }
 
   function goToResults() {
     setStage('results');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   }
 
-  // Container width expands on results screen for the 2-column layout
-  const wrapMax = stage === 'results' ? 'max-w-[1440px]' : 'max-w-quiz';
+  // Wide on results, narrower on quiz steps
+  const wrapMax = stage === 'results' ? 'max-w-[1600px]' : 'max-w-quiz';
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header onRetake={stage === 'results' ? handleRetake : undefined} />
       <Breadcrumb />
 
-      <main className={`flex-1 mx-auto w-full ${wrapMax} px-4 sm:px-6 lg:px-8 py-8 sm:py-10 transition-[max-width] duration-300`}>
-        <AnimatePresence mode="wait">
+      <main className={`flex-1 mx-auto w-full ${wrapMax} px-4 sm:px-6 lg:px-10 py-8 sm:py-10 transition-[max-width] duration-300`}>
+        <AnimatePresence mode="wait" initial={false}>
           {stage === 'intro' && (
-            <IntroScreen
-              key="intro"
-              onStart={() => setStage('industry')}
-            />
+            <IntroScreen key="intro" onStart={() => setStage('industry')} />
           )}
 
           {stage === 'industry' && (
             <IndustryScreen
               key="industry"
               selected={industry}
-              otherLabel={otherLabel}
               onSelect={setIndustry}
-              onOtherLabel={setOtherLabel}
               onBack={() => setStage('intro')}
+              onNext={() => setStage('environment')}
+            />
+          )}
+
+          {stage === 'environment' && (
+            <EnvironmentScreen
+              key="environment"
+              selected={environment}
+              onSelect={setEnvironment}
+              onBack={() => setStage('industry')}
+              onNext={() => setStage('orgsize')}
+            />
+          )}
+
+          {stage === 'orgsize' && (
+            <OrgSizeScreen
+              key="orgsize"
+              selected={orgSize}
+              onSelect={setOrgSize}
+              onBack={() => setStage('environment')}
               onNext={goToQuiz}
             />
           )}
@@ -85,11 +102,9 @@ export default function App() {
               key="quiz"
               step={step}
               answers={answers}
-              plainMode={plainMode}
               onSelect={handleSelect}
-              onPlainModeChange={setPlainMode}
               onBack={() => {
-                if (step === 0) setStage('industry');
+                if (step === 0) setStage('orgsize');
                 else setStep(s => s - 1);
               }}
               onNext={() => setStep(s => Math.min(s + 1, QUESTIONS.length - 1))}
@@ -97,11 +112,13 @@ export default function App() {
             />
           )}
 
-          {stage === 'results' && industry && (
+          {stage === 'results' && (
             <ResultsScreen
               key="results"
               answers={answers}
-              industry={industry}
+              industry={industry!}
+              environment={environment!}
+              orgSize={orgSize!}
               onRetake={handleRetake}
             />
           )}
