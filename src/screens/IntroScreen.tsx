@@ -7,10 +7,10 @@ interface Props {
 export function IntroScreen({ onStart }: Props) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
       className="bg-white border border-border rounded-2xl shadow-md p-7 sm:p-10 md:p-12"
     >
       <span className="inline-block text-[0.72rem] font-semibold uppercase tracking-widest text-airtel-red bg-airtel-red-light border border-airtel-red/20 rounded-full px-3 py-1 mb-5">

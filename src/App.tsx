@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -32,15 +32,15 @@ export default function App() {
     });
   }
 
-  function handleRetake() {
-    window.scrollTo({ top: 0 });
+  const handleRetake = useCallback(() => {
+    window.scrollTo(0, 0);
     setIndustry(null);
     setEnvironment(null);
     setOrgSize(null);
     setStep(0);
     setAnswers(new Array(QUESTIONS.length).fill(null));
     setStage('intro');
-  }
+  }, []);
 
   function goToQuiz() {
     setStage('quiz');

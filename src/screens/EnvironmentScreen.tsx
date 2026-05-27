@@ -17,11 +17,10 @@ interface Props {
 export function EnvironmentScreen({ selected, onSelect, onBack, onNext }: Props) {
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
       className="bg-white border border-border rounded-2xl shadow-md p-6 sm:p-9 md:p-11"
     >
       <h2 className="text-[1.2rem] sm:text-[1.35rem] font-bold leading-snug tracking-tight text-ink-dark">
