@@ -7,3 +7,8 @@ dist
 .claude
 *.docx
 ~$*
+
+# Local env files (Supabase keys)
+.env
+.env.local
+.env.*.local

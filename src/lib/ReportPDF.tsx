@@ -276,7 +276,7 @@ function PageFooter() {
   return (
     <View style={s.footer} fixed>
       <Text>© Bharti Airtel Limited · Airtel Secure</Text>
-      <Text render={({ pageNumber, totalPages }) => `${pageNumber} of ${totalPages}`} />
+      <Text render={({ pageNumber, totalPages }: { pageNumber: number; totalPages: number }) => `${pageNumber} of ${totalPages}`} />
     </View>
   );
 }

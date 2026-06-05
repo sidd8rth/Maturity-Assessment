@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { IndustryId, ResultsView, Environment, OrgSize } from '../types';
 import { computeScores } from '../lib/scoring';
@@ -11,6 +11,8 @@ import { ScoreRing } from '../components/ScoreRing';
 import { DomainBars } from '../components/DomainBars';
 import { ThreatList } from '../components/ThreatList';
 import { RecommendationList } from '../components/RecommendationList';
+import { useAuth } from '../lib/auth';
+import { saveAssessment } from '../lib/assessments';
 
 // Architecture engine + display
 import capabilitiesData from '../architecture/data/capabilities.json';
@@ -46,6 +48,8 @@ interface Props {
   environment: Environment;
   orgSize: OrgSize;
   onRetake: () => void;
+  /** True when viewing a saved assessment from history (skip auto-save). */
+  isViewingHistorical?: boolean;
 }
 
 // ── Premium components ────────────────────────────────
@@ -80,11 +84,12 @@ function CardLabel({ eyebrow, title }: { eyebrow?: string; title: string }) {
 }
 
 // ── ResultsScreen ─────────────────────────────────────
-export function ResultsScreen({ answers, industry, environment, orgSize, onRetake }: Props) {
+export function ResultsScreen({ answers, industry, environment, orgSize, onRetake, isViewingHistorical = false }: Props) {
+  const { session } = useAuth();
   const [tab, setTab]     = useState<ResultTab>('maturity');
   const view: ResultsView = 'technical';
   const [downloading, setDownloading] = useState(false);
-  const [downloadPromptOpen, setDownloadPromptOpen] = useState(true);
+  const [downloadPromptOpen, setDownloadPromptOpen] = useState(!isViewingHistorical);
 
   // ── Maturity computation ────────────────
   const { domainScores, overall, tier } = useMemo(
@@ -152,6 +157,31 @@ export function ResultsScreen({ answers, industry, environment, orgSize, onRetak
   );
 
   const industryName = INDUSTRIES.find(i => i.id === industry)?.label ?? industry;
+
+  // ── Auto-save assessment for logged-in users on first mount ────────
+  const savedRef = useRef(false);
+  useEffect(() => {
+    if (isViewingHistorical) return;
+    if (!session) return;
+    if (savedRef.current) return;
+    savedRef.current = true;
+    saveAssessment({
+      industry,
+      environment,
+      org_size: orgSize,
+      answers,
+      score: overall,
+      tier,
+      payload: {
+        domainScores,
+        picks,
+        archTier: defaultArchTier,
+      },
+    }).then(({ error }) => {
+      if (error) console.warn('[assessment save]', error);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // ── PDF download ────────────────────────
   async function downloadReport() {
